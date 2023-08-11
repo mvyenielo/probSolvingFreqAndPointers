@@ -22,6 +22,13 @@
  */
 
 // add whatever parameters you deem necessary & write doc comment
+/**
+ *
+ * @param {string} word
+ * @param {string} letter
+ * @returns boolean that determines whether the first string can be made the
+ * chars in the second string
+ */
 function canConstructWord(word, letter) {
 
   const wordObj = getFrequencyCounter(word);
@@ -30,6 +37,9 @@ function canConstructWord(word, letter) {
   for (let key in wordObj) {
 
     if(!(key in letterObj) || wordObj[key] > letterObj[key]) {
+      // will exclude cases where chars in word do not exist in letter
+      // letter string can only create word string if it has at least the same
+      //num of chars as the other for a given char
       return false;
     }
 
@@ -38,6 +48,12 @@ function canConstructWord(word, letter) {
   return true;
 }
 
+/**
+ *
+ * @param {string} items can be either input strings
+ * @returns an object that contains the chars of the input string
+ * as keys, and then frequency of the char as its value
+ */
 function getFrequencyCounter(items) {
   const freqs = {};
 
